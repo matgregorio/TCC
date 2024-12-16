@@ -1,7 +1,9 @@
 const Participante = require('../models/Participante');
 const bcrypt = require('bcrypt');
 
-exports.criarParticipante = async (req, res) => {
+module.exports = class participanteController{
+    static async criarParticipante(req,res){
+        
     const{cpf,senha,nome,email,telefone} = req.body;
 
     try{
@@ -18,7 +20,7 @@ exports.criarParticipante = async (req, res) => {
             nome,
             email,
             telefone,
-            tipoParticipante: aluno
+            tipoParticipante: "aluno"
         });
 
         await novoParticipante.save();
@@ -26,17 +28,18 @@ exports.criarParticipante = async (req, res) => {
     }catch(error){
         res.status(500).json({message:'Erro ao criar participante', error});
     }
+    }
 
-    exports.listarParticipantes = async (req, res) => {
+    static async listarParticipantes(req,res){
         try{
             const participantes = await Participante.find({deletado: false});
             res.status(200).json(participantes);
         }catch(error){
             res.status(500).json({message: 'Erro ao listar participantes', error});
         }
-    };
+    }
 
-    exports.buscarParticipante = async (req, res) => {
+    static async buscarParticipante(req,res){
         const {id} = req.params;
 
         try{
@@ -48,9 +51,9 @@ exports.criarParticipante = async (req, res) => {
         }catch(error){
             res.status(500).json({message: 'Erro ao buscar participante', error});
         }
-    };
+    }
 
-    exports.editarParticipante = async (req, res) => {
+    static async editarParticipante(req,res){
         const {id} = req.params;
         const {cpf, senha, nome, email, telefone} = req.body;
 
@@ -76,7 +79,7 @@ exports.criarParticipante = async (req, res) => {
         }
     }
 
-    exports.deletarParticipante = async (req, res) => {
+    static async deletarParticipante(req,res){
         const {id} = req.params;
 
         try{
@@ -91,6 +94,5 @@ exports.criarParticipante = async (req, res) => {
         }catch(error){
             res.status(500).json({message: 'Erro ao deletar participante'}, error);
         }
-    };
-
+    }
 }

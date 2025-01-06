@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Instituicao = require('./Instituicao');
 
 const participanteSchema = new mongoose.Schema({
     cpf:{
@@ -27,6 +28,12 @@ const participanteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    resetToken: String,
+    resetTokenExpires: Date,
+    instituicao:{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Instituicao',
+         required: true
+        },
     criadoEm:{
         type: Date, 
         default: Date.now

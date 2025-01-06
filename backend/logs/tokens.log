@@ -1,0 +1,8 @@
+{"level":"warn","message":"Tentativa de renovação falhou - Token ausente","timestamp":"2024-12-23T19:26:35.003Z"}
+{"level":"warn","message":"Tentativa de renovação falhou - Token ausente","timestamp":"2024-12-23T21:54:35.848Z"}
+{"level":"warn","message":"Tentativa de renovação falhou - Token ausente","timestamp":"2024-12-23T21:55:52.124Z"}
+{"level":"warn","message":"Tentativa de renovação falhou - Token ausente","timestamp":"2024-12-23T21:56:12.643Z"}
+{"level":"info","message":"Token renovado com sucesso. Usuário ID: 676989254f0c71183d5e36c8","timestamp":"2024-12-23T21:57:40.692Z"}
+{"level":"info","message":"Login bem-sucedido. CPF: 12345678902, Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Njk4OTI1NGYwYzcxMTgzZDVlMzZjOCIsInRpcG9QYXJ0aWNpcGFudGUiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzM0OTkxOTQ3LCJleHAiOjE3MzQ5OTU1NDd9.A6KUFEop9Lpe7Wl0J9WawY-r-EcP5icowz5jOzzrK3g","timestamp":"2024-12-23T22:12:27.086Z"}
+{"level":"info","message":"Login bem-sucedido. CPF: 12345678902, Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Njk4OTI1NGYwYzcxMTgzZDVlMzZjOCIsInRpcG9QYXJ0aWNpcGFudGUiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzM1MDM3NjE4LCJleHAiOjE3MzUwNDEyMTh9.c2YjhxthLCCwjV-azINzT0UytB_n7oTW2l8z3yW5eMU","timestamp":"2024-12-24T10:53:38.292Z"}
+{"level":"info","message":"Login bem-sucedido. CPF: 12345678902, Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Njk4OTI1NGYwYzcxMTgzZDVlMzZjOCIsInRpcG9QYXJ0aWNpcGFudGUiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzM1MDUzMDgwLCJleHAiOjE3MzUwNTY2ODB9.7LyivjCSuvFNvjieD4mTvfPtERoeUBL5yRu2FhoLJp8","timestamp":"2024-12-24T15:11:20.618Z"}

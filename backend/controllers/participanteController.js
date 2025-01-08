@@ -1,4 +1,5 @@
 const Participante = require('../models/Participante');
+const Instituicao = require('../models/Instituicao');
 const RefreshToken = require('../models/RefreshToken');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -52,12 +53,17 @@ module.exports = class participanteController {
 
     static async criarParticipante(req, res) {
 
-        const { cpf, senha, nome, email, telefone } = req.body;
+        const { cpf, senha, nome, email, telefone, instituicaoId } = req.body;
 
         try {
             const participanteExistente = await Participante.findOne({ $or: [{ cpf }, { email }] });
             if (participanteExistente) {
                 return res.status(400).json({ message: 'CPF ou e-mail já registrados' });
+            }
+
+            const instituicao = await Instituicao.findById(instituicaoId);
+            if(!instituicao){
+                return res.status(404).json({message: 'Instituição não encontrada.'});
             }
 
             const senhaCriptografada = await bcrypt.hash(senha, 10);
@@ -68,7 +74,8 @@ module.exports = class participanteController {
                 nome,
                 email,
                 telefone,
-                tipoParticipante: "aluno"
+                tipoParticipante: "aluno",
+                instituicao: instituicao._id
             });
 
             await novoParticipante.save();
@@ -88,7 +95,7 @@ module.exports = class participanteController {
 
     static async listarParticipantes(req, res) {
         try {
-            const participantes = await Participante.find({ deletado: false });
+            const participantes = await Participante.find({ deletado: false }).populate('instituicao', 'nome');
             res.status(200).json(participantes);
         } catch (error) {
             res.status(500).json({ message: 'Erro ao listar participantes', error });
@@ -111,7 +118,7 @@ module.exports = class participanteController {
 
     static async editarParticipante(req, res) {
         const { id } = req.params;
-        const { cpf, senha, nome, email, telefone } = req.body;
+        const { cpf, senha, nome, email, telefone, instituicaoId } = req.body;
 
         try {
             const participante = await Participante.findById(id);
@@ -126,6 +133,7 @@ module.exports = class participanteController {
             participante.nome = nome || participante.nome;
             participante.email = email || participante.email;
             participante.telefone = telefone || participante.telefone;
+            participante.instituicao = instituicaoId || participante.instituicao;
             participante.editadoEm = Date.now();
 
             await participante.save();

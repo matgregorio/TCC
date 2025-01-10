@@ -15,7 +15,7 @@ module.exports = class areaDeAtuacao{
     static async listarAreaDeAtuacao(req, res){
         try{
             const areaDeAtuacao = await AreaDeAtuacao.find();
-            re.status(200).json(areaDeAtuacao);
+            res.status(200).json(areaDeAtuacao);
         }catch(error){
             res.status(500).json({message: 'Erro ao listar áreas de atuação. ', error});
         }
